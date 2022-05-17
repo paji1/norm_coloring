@@ -13,7 +13,7 @@ INSTALL_PATH="$HOME/Applications/bin"
 if [ -z $1 ]
 then
     norminette "." > file.txt
-elif [ $1 = "remove" ]; then
+elif [ $1 = "--reset" ]; then
     $INSTALL_PATH/remove.sh
 else
     norminette "$*" > file.txt
