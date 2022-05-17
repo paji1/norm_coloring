@@ -1,29 +1,24 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    normcolor.sh                                       :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/16 19:16:44 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/05/17 14:45:29 by hhamza           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!/bin/sh
-if [ -z $1 ]
-then
-    norminette "." > file.txt
-else
-    norminette "$*" > file.txt
-fi
 
+# Colors
 RED='\033[0;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 CYAN='\033[1;36m'
 PURPLE='\033[1;35m'
 NC='\033[0m'
+
+INSTALL_PATH="$HOME/Applications/bin"
+
+if [ -z $1 ]
+then
+    norminette "." > file.txt
+elif [ $1 = "remove" ]; then
+    $INSTALL_PATH/remove.sh
+else
+    norminette "$*" > file.txt
+fi
+
 awk -v RED=$RED -v GREEN=$GREEN  -v NC=$NC -v YELLOW=$YELLOW -v CYAN=$CYAN -v PURPLE=$PURPLE '
 {
     is_file_line = match($0, /^.+\.[ch]/);
@@ -48,5 +43,4 @@ awk -v RED=$RED -v GREEN=$GREEN  -v NC=$NC -v YELLOW=$YELLOW -v CYAN=$CYAN -v PU
             printf CYAN $i NC " "; print "";
     }
 }' file.txt
-rm -rf file.txt &> /dev/null
-
+rm -rf file.txt
