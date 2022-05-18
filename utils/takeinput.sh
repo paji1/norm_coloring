@@ -78,32 +78,38 @@ fun()
 
 install_env()
 {
-	grep "source  $INSTALL_PATH/env.sh" ~/.zshrc > /dev/null 2>&1
+	grep "$INSTALL_PATH/env.sh" ~/.zshrc > /dev/null 2>&1
 	if [ $? -ne 0 ]; then
 		echo "source $INSTALL_PATH/env.sh" >> ~/.zshrc
 	fi
 }
 
-install_env 
 while [ $i -lt 5 ]
 do
 	print_color
 	
-	read num 
+	if [ $i -eq 3 ]
+	then
+		echo "CHOOSE COLOR FOR LINE AND COLUMN NUMBERS"
+	else
+		echo "CHOOSE COLOR FOR : ${STR[$((i - 1))]}" 
+	fi
+	read  -p "" num
 	while ! [[ $num =~ $ISNUM && $num -lt 12 ]]
 	do
 		printf "ENTER valid number\n"
-		read num 
+		read num
 	done
 	fun $num $i
 	if [ $i -eq 3 ]
 	then
 		S="$S$NC (line: $COLOR1""45$NC, col: $COLOR1""6 $NC):"
 	else
-		S="$S $COLOR1${STR[$((i - 1))]}"
+		S="$S $COLOR1${STR[$((i - 1))]}$NC"
 	fi
 	printf "$S\n"
 	i=`expr $i + 1`
 done
+install_env
 
 

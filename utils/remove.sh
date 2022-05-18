@@ -12,17 +12,25 @@ if [ -z $SHELL ]; then
 	exit 1
 fi
 
-if [[ $SHELL == *"zsh" ]]; then
+if  [[ $SHELL == *"zsh" ]]; then
 	SHELLRC="$HOME/.zshrc"
 elif [[ $SHELL == *"bash" ]]; then
 	SHELLRC="$HOME/.bashrc"
+	echo hello
 fi
+# echo $SHELLRC
+cp -rf $SHELLRC ${SHELLRC}.pre-normcolor
 
-cp $SHELLRC ${SHELLRC}.pre-normcolor
-
-awk -v INSTALL_PATH="$INSTALL_PATH" '
+awk  '
 {
 	sub(/.*normcolor.sh"$/, ""); print $0
+}' $SHELLRC.pre-normcolor > $SHELLRC
+
+cp -rf $SHELLRC ${SHELLRC}.pre-normcolor
+
+awk  '
+{
+	sub(/.*env.sh$/, ""); print $0
 }' $SHELLRC.pre-normcolor > $SHELLRC
 
 cd $HOME

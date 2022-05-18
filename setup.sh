@@ -19,13 +19,13 @@ elif [ $SHELL = *"bash" ]; then
 fi
 
 mkdir -p $INSTALL_PATH
-cp -f normcolor.sh $INSTALL_PATH
+cp -f utils/normcolor.sh $INSTALL_PATH
 if [ $? -ne 0 ]; then
 	echo "Installation failed"
 	exit 1
 fi
 
-cp -f remove.sh $INSTALL_PATH
+cp -f utils/remove.sh $INSTALL_PATH
 if [ $? -ne 0 ]; then
 	echo "Installation failed"
 	exit 1
@@ -41,12 +41,12 @@ install_alias()
 		echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
 	fi
 }
-source takeinput.sh
+source utils/takeinput.sh
 
 if [ -e "$SHELLRC" ]; then
 	# echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
 	install_alias
-	echo $SHELLRC
+	# echo $SHELLRC
 else
 	echo "Error. rc file does not exist"
 	exit 1
