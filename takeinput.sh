@@ -15,17 +15,17 @@ PURPLE_black='\033[0;35m'
 WHITE='\33[1m'
 NC='\033[0m'
 
-printf "1 = $RED██ $NC"
-printf "2 = $RED_black██ $NC"
-printf "3 = $GREEN██ $NC\n\n"
-printf "4 = $GREEN_black██ $NC"
-printf "5 = $CYAN██ $NC"
-printf "6 = $CYAN_black██ $NC\n\n"
-printf "7 = $YELLOW██ $NC"
-printf "8 = $YELLOW_black██ $NC"
-printf "9 = $PURPLE██ $NC\n\n"
-printf "10 = $PURPLE_black██ $NC"
-printf "11 = $WHITE██ $NC\n"
+printf "1 = $RED RED $NC\n"
+printf "2 = $RED_black DARK RED $NC\n"
+printf "3 = $GREEN GREEN $NC\n"
+printf "4 = $GREEN_black  DARK GREEN $NC\n"
+printf "5 = $CYAN CYAN $NC\n"
+printf "6 = $CYAN_black DARK CYAN $NC\n"
+printf "7 = $YELLOW YELLOW $NC\n"
+printf "8 = $YELLOW_black DARK YELLOW $NC\n"
+printf "9 = $PURPLE PURPLE $NC\n"
+printf "10 = $PURPLE_black DARK PURPLE $NC\n"
+printf "11 = $WHITE WHITE $NC\n"
 
 echo ENTER COLOR1 NUMBER" :\n"
 read num 
