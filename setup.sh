@@ -41,6 +41,7 @@ install_alias()
 		echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
 	fi
 }
+source takeinput.sh
 
 if [ -e "$SHELLRC" ]; then
 	# echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
