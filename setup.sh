@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 INSTALL_PATH="$HOME/Applications/bin"
 
@@ -12,9 +12,9 @@ if [ -z $SHELL ]; then
 	exit 1
 fi
 
-if [ $SHELL = "/bin/zsh" ]; then
+if [[ $SHELL == *"zsh" ]]; then
 	SHELLRC="$HOME/.zshrc"
-elif [ $SHELL = "/bin/bash" ]; then
+elif [ $SHELL = *"bash" ]; then
 	SHELLRC="$HOME/.bashrc"
 fi
 
@@ -45,10 +45,11 @@ install_alias()
 if [ -e "$SHELLRC" ]; then
 	# echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
 	install_alias
+	echo $SHELLRC
 else
 	echo "Error. rc file does not exist"
 	exit 1
 fi
 
-echo $GREEN"Installation complete!" $NC
+printf "$GREEN"Installation complete!" $NC\n"
 exec zsh

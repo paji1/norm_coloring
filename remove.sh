@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 INSTALL_PATH="$HOME/Applications/bin"
 
@@ -12,9 +12,9 @@ if [ -z $SHELL ]; then
 	exit 1
 fi
 
-if [ $SHELL = "/bin/zsh" ]; then
+if [[ $SHELL == *"zsh" ]]; then
 	SHELLRC="$HOME/.zshrc"
-elif [ $SHELL = "/bin/bash" ]; then
+elif [[ $SHELL == *"bash" ]]; then
 	SHELLRC="$HOME/.bashrc"
 fi
 
@@ -27,6 +27,6 @@ awk -v INSTALL_PATH="$INSTALL_PATH" '
 
 cd $HOME
 rm -rf $INSTALL_PATH
-echo "${RED}norminette was reset to default successfully$NC"
+printf "${RED}norminette was reset to default successfully$NC\n"
 cd - > /dev/null 2>&1
 exec zsh
