@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 
@@ -15,6 +15,9 @@ PURPLE_black='\033[0;35m'
 WHITE='\33[1m'
 NC='\033[0m'
 
+print_color()
+{
+
 printf "1 = $RED RED $NC\n"
 printf "2 = $RED_black DARK RED $NC\n"
 printf "3 = $GREEN GREEN $NC\n"
@@ -26,10 +29,13 @@ printf "8 = $YELLOW_black DARK YELLOW $NC\n"
 printf "9 = $PURPLE PURPLE $NC\n"
 printf "10 = $PURPLE_black DARK PURPLE $NC\n"
 printf "11 = $WHITE WHITE $NC\n"
+}
 
-echo ENTER COLOR1 NUMBER" :\n"
-read num 
-
+STR[0]="Error:" 
+STR[1]=" INVALID_HEADER"
+STR[2]="       (line:"
+STR[3]="   1, col:   1):    "
+STR[3]=" Missing or invalid 42 header"
 fun()
 {
 
@@ -67,8 +73,29 @@ fun()
 	then
 		COLOR1=$WHITE
 	fi
-	export COLOR1
-	echo $COLOR1 12
+	echo  "export COLOR$2=\"\\\033[1;$COLOR1\"" >> env.sh
+	# exec zsh
 }
-fun $num
+install_env()
+{
+	grep "source $PWD/env.sh" ~/.zshrc > /dev/null 2>&1
+	if [ $? -ne 0 ]; then
+		echo "source $PWD/env.sh" >> ~/.zshrc
+	fi
+}
+S=""
+install_env 
+i=1
+while [ $i -lt 5 ]
+do
+	print_color
+	
+	read num 
+	fun $num $i
+
+	S="$S $COLOR1 ${STR[$((i - 1))]}"
+	printf "$S\n"
+	i=`expr $i + 1`
+done
+
 
