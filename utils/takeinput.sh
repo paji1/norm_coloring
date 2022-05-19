@@ -103,7 +103,7 @@ do
 	fun $num $i
 	if [ $i -eq 3 ]
 	then
-		S="$S$NC (line: $COLOR1""45$NC, col: $COLOR1""6 $NC):"
+		S="Example: \"$S$NC (line: $COLOR1""45$NC, col: $COLOR1""6 $NC):\""
 	else
 		S="$S $COLOR1${STR[$((i - 1))]}$NC"
 	fi

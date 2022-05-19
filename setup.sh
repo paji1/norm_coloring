@@ -44,13 +44,11 @@ install_alias()
 source utils/takeinput.sh
 
 if [ -e "$SHELLRC" ]; then
-	# echo "alias norminette=\"$INSTALL_PATH/normcolor.sh\"" >> $SHELLRC
 	install_alias
-	# echo $SHELLRC
 else
 	echo "Error. rc file does not exist"
 	exit 1
 fi
 
-printf "$GREEN"Installation complete!" $NC\n"
+printf "${GREEN}Installation complete!$NC\n"
 exec zsh
