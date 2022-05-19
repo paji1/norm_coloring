@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Colors
-RED='\033[0;31m'
+RED=$COLOR1
 GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-CYAN='\033[1;36m'
-PURPLE='\033[1;35m'
+YELLOW=$COLOR3
+CYAN=$COLOR4
+PURPLE=$COLOR2
 NC='\033[0m'
 
 INSTALL_PATH="$HOME/Applications/bin"
