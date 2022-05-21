@@ -8,7 +8,7 @@ CYAN=$COLOR4
 PURPLE=$COLOR2
 NC='\033[0m'
 
-INSTALL_PATH="$HOME/Applications/bin"
+INSTALL_PATH="$HOME/Applications/normcolor"
 
 if [ -z $1 ]
 then

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_PATH="$HOME/Applications/bin"
+INSTALL_PATH="$HOME/Applications/normcolor"
 
 RED='\033[0;31m'
 NC='\033[0m'
